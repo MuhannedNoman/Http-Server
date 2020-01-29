@@ -56,5 +56,16 @@
  * #---------------------------------------------------------[Functions]--------------------------------------------------------
  */
 
-
+const http = require('http');
+const server = http.createServer((request,response)=>{
+    if(request.url === '/'){
+        response.write("Hello there");
+        response.end();
+    } else {
+        response.write("Error 404 page not found");
+        response.end();
+    }
+});
+// localhost:3005
+server.listen("3005");
 
