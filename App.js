@@ -60,8 +60,8 @@ const http = require('http');
 const fs = require('fs');
 
 http.createServer((request,response)=>{
-    const readStream = fs.createReadStream('./static/index.html');
-    response.writeHead(200,{'Content-type' : 'text/html'});
+    const readStream = fs.createReadStream('./static/image.jpg');
+    response.writeHead(200,{'Content-type' : 'image/jpg'});
     readStream.pipe(response);
 }).listen("3005");
 
