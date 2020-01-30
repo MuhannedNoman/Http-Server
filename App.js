@@ -57,15 +57,11 @@
  */
 
 const http = require('http');
-const server = http.createServer((request,response)=>{
-    if(request.url === '/'){
-        response.write("Hello there");
-        response.end();
-    } else {
-        response.write("Error 404 page not found");
-        response.end();
-    }
-});
-// localhost:3005
-server.listen("3005");
+const fs = require('fs');
+
+http.createServer((request,response)=>{
+    const readStream = fs.createReadStream('./static/index.html');
+    response.writeHead(200,{'Content-type' : 'text/html'});
+    readStream.pipe(response);
+}).listen("3005");
 
